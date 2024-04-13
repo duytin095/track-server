@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
          unique: true,
          require:true,
     }, 
-    pasword:{
+    password:{
         type: String,
         require: true
     }
