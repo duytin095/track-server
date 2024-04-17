@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
- const useSchema = new mongoose.Schema({
-    email:{
+const useSchema = new mongoose.Schema({
+    email: {
         type: String,
-         unique: true,
-         require:true,
-    }, 
-    password:{
+        unique: true,
+        required: true,
+    },
+    password: {
         type: String,
-        require: true
+        required: true
     }
- });
+});
 
- mongoose.model('User', useSchema);
+mongoose.model('User', useSchema);
