@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const jwt = require('jsonwebtoken');
 
 const route = express.Router();
 
@@ -9,7 +10,9 @@ route.post('/signup', async (req, res) => {
     try {
         const user = new User({ email, password });
         await user.save();
-        res.send('you made a post requestTTT');
+        const token = jwt.sign({userId: user._id}, 'MY_SECRET_KEY');
+        console.log('token'+token);
+        res.send({token: token});
     } catch (error) {
     // Check if the error is a validation error
     if (error.name === 'ValidationError') {
